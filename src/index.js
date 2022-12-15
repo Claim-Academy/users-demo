@@ -17,6 +17,10 @@ function createBioCard(user) {
   `;
 }
 
+function filterByName(searchLetters, listOfUsers) {
+  return listOfUsers.filter((user) => user.name.includes(searchLetters));
+}
+
 // Business logic
 const resp = await fetch("https://jsonplaceholder.typicode.com/users");
 const users = await resp.json();
