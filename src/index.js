@@ -1,6 +1,8 @@
 // Initial const
 const root = document.querySelector("#root");
 
+let letters = "";
+
 // Function declarations/expressions
 function createBioCard(user) {
   return `
@@ -17,7 +19,7 @@ function createBioCard(user) {
   `;
 }
 
-function filterByName(searchLetters, listOfUsers) {
+function filterByName(listOfUsers, searchLetters) {
   return listOfUsers.filter((user) => user.name.includes(searchLetters));
 }
 
@@ -41,6 +43,9 @@ root.innerHTML = `
 // ⚠️ 'input' doesn't exist until we update the 'root' 'innerHTML'
 const search = document.querySelector("input");
 
-search.addEventListener("keydown", () => {
-  console.log("hello");
+search.addEventListener("keydown", (event) => {
+  letters += event.key;
+  const filteredUsers = filterByName(users, letters);
+
+  console.log(filteredUsers);
 });
