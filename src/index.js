@@ -1,5 +1,6 @@
 // Initial const
 const root = document.querySelector("#root");
+const search = document.querySelector("input");
 
 // Function declarations/expressions
 function createBioCard(user) {
