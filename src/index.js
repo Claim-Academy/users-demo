@@ -1,6 +1,5 @@
 // Initial const
 const root = document.querySelector("#root");
-const search = document.querySelector("input");
 
 // Function declarations/expressions
 function createBioCard(user) {
@@ -39,4 +38,9 @@ root.innerHTML = `
 </main
 `;
 
-console.log(filterByName("L", users));
+// ⚠️ 'input' doesn't exist until we update the 'root' 'innerHTML'
+const search = document.querySelector("input");
+
+search.addEventListener("keydown", () => {
+  console.log("hello");
+});
