@@ -2,7 +2,7 @@
 const root = document.querySelector("#root");
 
 // This keeps track of what we type in the search bar
-let letters = "";
+const letters = "";
 
 // Function declarations/expressions
 function createBioCard(user) {
@@ -31,13 +31,6 @@ function renderCardsInMain(currentUsers) {
   main.innerHTML = currentUsers.map(createBioCard).join("");
 }
 
-function updateLetters(event) {
-  // ⚠️ ASSUMPTION: If it starts with "Key", it's a letter
-  if (event.code.startsWith("Key")) {
-    letters += event.key;
-  }
-}
-
 const resp = await fetch("https://jsonplaceholder.typicode.com/users");
 const users = await resp.json();
 
@@ -64,14 +57,11 @@ const main = document.querySelector("main");
 const search = document.querySelector("input");
 
 search.addEventListener(
-  "keydown",
+  "input",
 
   // Browser API models the event as an Event object
   (event) => {
-    updateLetters(event);
-
-    const filteredUsers = filterByName(users, letters);
-
+    const filteredUsers = filterByName(users, event.target.value);
     renderCardsInMain(filteredUsers);
   }
 );
