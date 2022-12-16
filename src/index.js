@@ -60,8 +60,24 @@ search.addEventListener(
     letters +=
       // We can access information about the event such as what key was pressed
       event.key;
-    const filteredUsers = filterByName(users, letters);
 
-    console.log(filteredUsers);
+    const filteredUsersHTML = filterByName(users, letters)
+      .map(createBioCard)
+      .join("");
+
+    /**
+     * 1. We need to take the filteredUsers and turn them into HTML
+     * 2. We need to update the 'root' 'innerHTML' with the new HTML
+     */
+
+    root.innerHTML = `
+<div>
+<label for="search" class="sr-only">Search</label>
+<input type="search" id="search" placeholder="🔍" />
+</div>
+<main class="items-center grid grid-cols-3 gap-4">
+  ${filteredUsersHTML}
+</main
+`;
   }
 );
